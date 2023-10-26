@@ -5,7 +5,7 @@ const myModal = new bootstrap.Modal('#createMovieModal', {
 
 const getMovies = () => {
     moviesContainer.empty()
-    $.get('http://localhost:6969/movies?token=123', res => {
+    $.get('http://localhost:1111/movies?token=123', res => {
         console.log(res)
         for (const movie of res) {
             moviesContainer.append(
@@ -45,7 +45,7 @@ $(document).ready(function(){
             actors: movieActors
         }
 
-        $.post('http://localhost:6969/movies?token=123', movieData, res => {
+        $.post('http://localhost:1111/movies?token=123', movieData, res => {
             console.log("He acabao c:");
             myModal.hide();
             getMovies();

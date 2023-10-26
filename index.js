@@ -20,7 +20,7 @@ app.get('', (req, res) => {
 // Database connection
 const mongoURI= 'mongodb+srv://isaacitesgoggle:123@maincluster.fprrhj9.mongodb.net/TIESODB?retryWrites=true&w=majority';
 mongoose.connect(mongoURI).then(() => {
-    app.listen(6969, () => {
+    app.listen(1111, () => {
         console.log("Connected to database!");
     })
 }).catch(err => {
