@@ -4,14 +4,17 @@ const myModal = new bootstrap.Modal('#createMovieModal', {
 })
 
 const getMovies = () => {
+    moviesContainer.empty()
     $.get('http://localhost:6969/movies?token=123', res => {
         console.log(res)
         for (const movie of res) {
             moviesContainer.append(
-                `<div class="card mb-2 col-12 col-md-6">
-                <div class="card-body">
-                    <h5 class="card-title">${movie.name}</h5>
-                    <p class="card-text">${movie.director}</p>
+            `<div class="col-12 col-md-6 mb-2">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">${movie.name}</h5>
+                        <p class="card-text">${movie.director}</p>
+                    </div>
                 </div>
             </div>`
             )
