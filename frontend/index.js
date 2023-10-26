@@ -1,22 +1,29 @@
 const moviesContainer = $('#moviesContainer')
+const myModal = new bootstrap.Modal('#createMovieModal', {
+    keyboard: false
+})
 
-$.get('http://localhost:6969/movies?token=123', res => {
-    console.log(res)
-    for (const movie of res) {
-        moviesContainer.append(
-            `<div class="card mb-2 col-12 col-md-6">
+const getMovies = () => {
+    $.get('http://localhost:6969/movies?token=123', res => {
+        console.log(res)
+        for (const movie of res) {
+            moviesContainer.append(
+                `<div class="card mb-2 col-12 col-md-6">
                 <div class="card-body">
                     <h5 class="card-title">${movie.name}</h5>
                     <p class="card-text">${movie.director}</p>
                 </div>
             </div>`
-        )
-    }
-})
+            )
+        }
+    })
+}
+
+getMovies();
 
 $(document).ready(function(){
     $('#createMovieForm').submit(function(e){
-        e.preventDefault(); // Previene el comportamiento por defecto del formulario
+        e.preventDefault();
 
         // Get form data
         const movieName = $('#movieName').val();
@@ -37,6 +44,8 @@ $(document).ready(function(){
 
         $.post('http://localhost:6969/movies?token=123', movieData, res => {
             console.log("He acabao c:");
+            myModal.hide();
+            getMovies();
         });
     });
 });
